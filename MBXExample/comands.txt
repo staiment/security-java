@@ -1,0 +1,950 @@
+Windows PowerShell
+Copyright (C) 2016 Microsoft Corporation. Todos los derechos reservados.
+
+PS C:\Users\David> cd J:\desarrollo\workspace\MBXExample
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe'
+Herramienta de Gestión de Certificados y Claves
+
+Comandos:
+
+ -certreq            Genera una solicitud de certificado
+ -changealias        Cambia un alias de entrada
+ -delete             Suprime una entrada
+ -exportcert         Exporta el certificado
+ -genkeypair         Genera un par de claves
+ -genseckey          Genera un clave secreta
+ -gencert            Genera un certificado a partir de una solicitud de certificado
+ -importcert         Importa un certificado o una cadena de certificados
+ -importpass         Importa una contraseña
+ -importkeystore     Importa una o todas las entradas desde otro almacén de claves
+ -keypasswd          Cambia la contraseña de clave de una entrada
+ -list               Enumera las entradas de un almacén de claves
+ -printcert          Imprime el contenido de un certificado
+ -printcertreq       Imprime el contenido de una solicitud de certificado
+ -printcrl           Imprime el contenido de un archivo CRL
+ -storepasswd        Cambia la contraseña de almacén de un almacén de claves
+
+Utilice "keytool -command_name -help" para la sintaxis de nombre_comando
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aClient.ce
+rt -alias clientCert -keystore truststoreserver
+Introduzca la contraseña del almacén de claves:
+Volver a escribir la contraseña nueva:
+Propietario: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 9eccf04
+Válido desde: Sat Feb 18 02:51:04 CET 2017 hasta: Tue Feb 13 02:51:04 CET 2018
+Huellas digitales del Certificado:
+         MD5: 9E:D9:82:9D:45:F7:A0:EA:1D:6D:4E:5E:D5:C5:A5:5E
+         SHA1: 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+         SHA256: 16:74:03:B8:83:9E:CB:1E:62:46:64:33:ED:DC:3C:43:10:C6:E0:00:CB:48:26:85:3E:ED:B0:81:4C:D8:20:2C
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 0C 16 5D 1D 02 38 20 35   36 11 10 B0 86 5D A7 B5  ..]..8 56....]..
+0010: 83 12 24 58                                        ..$X
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> ls
+
+
+    Directorio: J:\desarrollo\workspace\MBXExample
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       17/02/2017     23:03                .settings
+d-----       17/02/2017     23:44                bin
+d-----       17/02/2017     23:05                src
+-a----       17/02/2017     23:03            301 .classpath
+-a----       17/02/2017     23:03            386 .project
+-a----       18/02/2017      2:54           1274 aClient.cert
+-a----       18/02/2017      2:55           1254 aServer.cert
+-a----       18/02/2017      2:57           4403 clientkeystore
+-a----       18/02/2017      2:57           4391 serverkeystore
+-a----       18/02/2017     21:07            952 truststoreserver
+
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aServer.ce
+rt -alias serverCert -keystore clientstoreserver
+Introduzca la contraseña del almacén de claves:
+Volver a escribir la contraseña nueva:
+Propietario: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 1be341e6
+Válido desde: Sat Feb 18 02:23:21 CET 2017 hasta: Tue Feb 13 02:23:21 CET 2018
+Huellas digitales del Certificado:
+         MD5: 01:37:F8:6A:89:DB:0D:C6:C7:80:52:11:5F:2B:78:77
+         SHA1: 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+         SHA256: CE:28:EE:64:E1:98:74:49:19:23:54:CA:1F:C5:8B:DB:78:FF:09:6E:E2:BA:A4:7F:FD:54:C7:BD:18:97:9F:B8
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 73 28 41 CF D6 B0 EF 7F   B9 66 E9 6C 16 9F 0F 15  s(A......f.l....
+0010: E7 CC 03 8A                                        ....
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> ls
+
+
+    Directorio: J:\desarrollo\workspace\MBXExample
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       17/02/2017     23:03                .settings
+d-----       17/02/2017     23:44                bin
+d-----       17/02/2017     23:05                src
+-a----       17/02/2017     23:03            301 .classpath
+-a----       17/02/2017     23:03            386 .project
+-a----       18/02/2017      2:54           1274 aClient.cert
+-a----       18/02/2017      2:55           1254 aServer.cert
+-a----       18/02/2017      2:57           4403 clientkeystore
+-a----       18/02/2017     21:08            936 clientstoreserver
+-a----       18/02/2017      2:57           4391 serverkeystore
+-a----       18/02/2017     21:07            952 truststoreserver
+
+
+PS J:\desarrollo\workspace\MBXExample> mv .\clientstoreserver truststoreclient
+PS J:\desarrollo\workspace\MBXExample> ls
+
+
+    Directorio: J:\desarrollo\workspace\MBXExample
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       17/02/2017     23:03                .settings
+d-----       17/02/2017     23:44                bin
+d-----       17/02/2017     23:05                src
+-a----       17/02/2017     23:03            301 .classpath
+-a----       17/02/2017     23:03            386 .project
+-a----       18/02/2017      2:54           1274 aClient.cert
+-a----       18/02/2017      2:55           1254 aServer.cert
+-a----       18/02/2017      2:57           4403 clientkeystore
+-a----       18/02/2017      2:57           4391 serverkeystore
+-a----       18/02/2017     21:08            936 truststoreclient
+-a----       18/02/2017     21:07            952 truststoreserver
+
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias clientCert
+-keystore truststoreserver
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore truststore
+server
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\serverke
+ystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 3 entradas
+
+server, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 44:D1:AB:EE:32:CF:16:7F:E2:27:87:D2:46:CC:84:C3:78:FD:FE:05
+mine, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+aserverclient, 18-feb-2017, trustedCertEntry,
+Huella Digital de Certificado (SHA1): 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias aserverclie
+nt -keystore .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\serverke
+ystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 2 entradas
+
+server, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 44:D1:AB:EE:32:CF:16:7F:E2:27:87:D2:46:CC:84:C3:78:FD:FE:05
+mine, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\clientkeystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 3 entradas
+
+client, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): E0:DA:E4:19:09:74:21:D2:9D:86:AA:8C:EC:6E:7D:7E:CE:A9:4B:5C
+clientmine, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+aserverforme, 18-feb-2017, trustedCertEntry,
+Huella Digital de Certificado (SHA1): 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias aserverform
+e -keystore ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\clientkeystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 2 entradas
+
+client, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): E0:DA:E4:19:09:74:21:D2:9D:86:AA:8C:EC:6E:7D:7E:CE:A9:4B:5C
+clientmine, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\truststoreclient
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 1 entrada
+
+servercert, 18-feb-2017, trustedCertEntry,
+Huella Digital de Certificado (SHA1): 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias servercert
+-keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\truststoreclient
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aServer.ce
+rt -alias servercert -keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 1be341e6
+Válido desde: Sat Feb 18 02:23:21 CET 2017 hasta: Tue Feb 13 02:23:21 CET 2018
+Huellas digitales del Certificado:
+         MD5: 01:37:F8:6A:89:DB:0D:C6:C7:80:52:11:5F:2B:78:77
+         SHA1: 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+         SHA256: CE:28:EE:64:E1:98:74:49:19:23:54:CA:1F:C5:8B:DB:78:FF:09:6E:E2:BA:A4:7F:FD:54:C7:BD:18:97:9F:B8
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 73 28 41 CF D6 B0 EF 7F   B9 66 E9 6C 16 9F 0F 15  s(A......f.l....
+0010: E7 CC 03 8A                                        ....
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias servercert
+-keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file ..\MBXClient
+\aClient.cert -alias clientcert -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 9eccf04
+Válido desde: Sat Feb 18 02:51:04 CET 2017 hasta: Tue Feb 13 02:51:04 CET 2018
+Huellas digitales del Certificado:
+         MD5: 9E:D9:82:9D:45:F7:A0:EA:1D:6D:4E:5E:D5:C5:A5:5E
+         SHA1: 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+         SHA256: 16:74:03:B8:83:9E:CB:1E:62:46:64:33:ED:DC:3C:43:10:C6:E0:00:CB:48:26:85:3E:ED:B0:81:4C:D8:20:2C
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 0C 16 5D 1D 02 38 20 35   36 11 10 B0 86 5D A7 B5  ..]..8 56....]..
+0010: 83 12 24 58                                        ..$X
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\truststoreclient
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aServer.ce
+rt -alias servercert -keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 1be341e6
+Válido desde: Sat Feb 18 02:23:21 CET 2017 hasta: Tue Feb 13 02:23:21 CET 2018
+Huellas digitales del Certificado:
+         MD5: 01:37:F8:6A:89:DB:0D:C6:C7:80:52:11:5F:2B:78:77
+         SHA1: 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+         SHA256: CE:28:EE:64:E1:98:74:49:19:23:54:CA:1F:C5:8B:DB:78:FF:09:6E:E2:BA:A4:7F:FD:54:C7:BD:18:97:9F:B8
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 73 28 41 CF D6 B0 EF 7F   B9 66 E9 6C 16 9F 0F 15  s(A......f.l....
+0010: E7 CC 03 8A                                        ....
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias clientcert
+-keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\truststo
+reserver
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\serverke
+ystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 2 entradas
+
+server, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 44:D1:AB:EE:32:CF:16:7F:E2:27:87:D2:46:CC:84:C3:78:FD:FE:05
+mine, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\truststo
+reserver
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\truststo
+reserver
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias clientcert
+-keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+La contraseña del almacén de claves es demasiado corta, debe tener al menos 6 caracteres
+Introduzca la contraseña del almacén de claves:
+La contraseña del almacén de claves es demasiado corta, debe tener al menos 6 caracteres
+Introduzca la contraseña del almacén de claves:
+La contraseña del almacén de claves es demasiado corta, debe tener al menos 6 caracteres
+Demasiados fallos; inténtelo más adelante
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\truststoreclient
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 1 entrada
+
+servercert, 18-feb-2017, trustedCertEntry,
+Huella Digital de Certificado (SHA1): 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias servercert
+-keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aServer.ce
+rt -alias servercert -keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 1be341e6
+Válido desde: Sat Feb 18 02:23:21 CET 2017 hasta: Tue Feb 13 02:23:21 CET 2018
+Huellas digitales del Certificado:
+         MD5: 01:37:F8:6A:89:DB:0D:C6:C7:80:52:11:5F:2B:78:77
+         SHA1: 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+         SHA256: CE:28:EE:64:E1:98:74:49:19:23:54:CA:1F:C5:8B:DB:78:FF:09:6E:E2:BA:A4:7F:FD:54:C7:BD:18:97:9F:B8
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 73 28 41 CF D6 B0 EF 7F   B9 66 E9 6C 16 9F 0F 15  s(A......f.l....
+0010: E7 CC 03 8A                                        ....
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias servercert
+-keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file ..\MBXClient
+\aClient.cert -alias clientcert -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 9eccf04
+Válido desde: Sat Feb 18 02:51:04 CET 2017 hasta: Tue Feb 13 02:51:04 CET 2018
+Huellas digitales del Certificado:
+         MD5: 9E:D9:82:9D:45:F7:A0:EA:1D:6D:4E:5E:D5:C5:A5:5E
+         SHA1: 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+         SHA256: 16:74:03:B8:83:9E:CB:1E:62:46:64:33:ED:DC:3C:43:10:C6:E0:00:CB:48:26:85:3E:ED:B0:81:4C:D8:20:2C
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 0C 16 5D 1D 02 38 20 35   36 11 10 B0 86 5D A7 B5  ..]..8 56....]..
+0010: 83 12 24 58                                        ..$X
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file ..\MBXClient
+\aClient.cert -alias servercert -keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=ddjc, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 9eccf04
+Válido desde: Sat Feb 18 02:51:04 CET 2017 hasta: Tue Feb 13 02:51:04 CET 2018
+Huellas digitales del Certificado:
+         MD5: 9E:D9:82:9D:45:F7:A0:EA:1D:6D:4E:5E:D5:C5:A5:5E
+         SHA1: 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+         SHA256: 16:74:03:B8:83:9E:CB:1E:62:46:64:33:ED:DC:3C:43:10:C6:E0:00:CB:48:26:85:3E:ED:B0:81:4C:D8:20:2C
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 0C 16 5D 1D 02 38 20 35   36 11 10 B0 86 5D A7 B5  ..]..8 56....]..
+0010: 83 12 24 58                                        ..$X
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias servercert
+-keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aServer.ce
+rt -alias servercert -keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 1be341e6
+Válido desde: Sat Feb 18 02:23:21 CET 2017 hasta: Tue Feb 13 02:23:21 CET 2018
+Huellas digitales del Certificado:
+         MD5: 01:37:F8:6A:89:DB:0D:C6:C7:80:52:11:5F:2B:78:77
+         SHA1: 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+         SHA256: CE:28:EE:64:E1:98:74:49:19:23:54:CA:1F:C5:8B:DB:78:FF:09:6E:E2:BA:A4:7F:FD:54:C7:BD:18:97:9F:B8
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 73 28 41 CF D6 B0 EF 7F   B9 66 E9 6C 16 9F 0F 15  s(A......f.l....
+0010: E7 CC 03 8A                                        ....
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aServer.ce
+rt -alias clientcert -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+error de herramienta de claves: java.lang.Exception: Certificado no importado, el alias <clientcert> ya existe
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias clientcert
+-keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -file .\aServer.ce
+rt -alias clientcert -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpc, OU=dfg, O=dffd, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 1be341e6
+Válido desde: Sat Feb 18 02:23:21 CET 2017 hasta: Tue Feb 13 02:23:21 CET 2018
+Huellas digitales del Certificado:
+         MD5: 01:37:F8:6A:89:DB:0D:C6:C7:80:52:11:5F:2B:78:77
+         SHA1: 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+         SHA256: CE:28:EE:64:E1:98:74:49:19:23:54:CA:1F:C5:8B:DB:78:FF:09:6E:E2:BA:A4:7F:FD:54:C7:BD:18:97:9F:B8
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 73 28 41 CF D6 B0 EF 7F   B9 66 E9 6C 16 9F 0F 15  s(A......f.l....
+0010: E7 CC 03 8A                                        ....
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias servercert
+-keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias servercert
+-keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+error de herramienta de claves: java.lang.Exception: El alias <servercert> no existe
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias clientcert
+-keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\truststo
+reserver
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\truststo
+reserver -password cambiar
+Opción no permitida:  -password
+keytool -list [OPTION]...
+
+Enumera las entradas de un almacén de claves
+
+Opciones:
+
+ -rfc                            salida en estilo RFC
+ -alias <alias>                  nombre de alias de la entrada que se va a procesar
+ -keystore <keystore>            nombre de almacén de claves
+ -storepass <arg>                contraseña de almacén de claves
+ -storetype <storetype>          tipo de almacén de claves
+ -providername <providername>    nombre del proveedor
+ -providerclass <providerclass>  nombre de clase del proveedor
+ -providerarg <arg>              argumento del proveedor
+ -providerpath <pathlist>        classpath de proveedor
+ -v                              salida detallada
+ -protected                      contraseña a través de mecanismo protegido
+
+Utilice"keytool -help" para todos los comandos disponibles
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\truststo
+reserver -pass cambiar
+Opción no permitida:  -pass
+keytool -list [OPTION]...
+
+Enumera las entradas de un almacén de claves
+
+Opciones:
+
+ -rfc                            salida en estilo RFC
+ -alias <alias>                  nombre de alias de la entrada que se va a procesar
+ -keystore <keystore>            nombre de almacén de claves
+ -storepass <arg>                contraseña de almacén de claves
+ -storetype <storetype>          tipo de almacén de claves
+ -providername <providername>    nombre del proveedor
+ -providerclass <providerclass>  nombre de clase del proveedor
+ -providerarg <arg>              argumento del proveedor
+ -providerpath <pathlist>        classpath de proveedor
+ -v                              salida detallada
+ -protected                      contraseña a través de mecanismo protegido
+
+Utilice"keytool -help" para todos los comandos disponibles
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\truststo
+reserver
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\clientkeystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 2 entradas
+
+client, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): E0:DA:E4:19:09:74:21:D2:9D:86:AA:8C:EC:6E:7D:7E:CE:A9:4B:5C
+clientmine, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 31:A8:78:83:3F:D4:76:F0:B4:2A:95:99:C3:37:DA:03:16:D0:04:B1
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias client -key
+store ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias clientmine
+-keystore ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> del ..\MBXClient\aClient.cert
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore .\serverke
+ystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 2 entradas
+
+server, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 44:D1:AB:EE:32:CF:16:7F:E2:27:87:D2:46:CC:84:C3:78:FD:FE:05
+mine, 18-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 00:B2:15:CB:FB:4F:5D:A1:E0:07:4D:E8:95:EE:C7:48:6C:BF:AA:AB
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias server -key
+store .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias mine -keyst
+ore .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -list -keystore ..\MBXClie
+nt\truststoreclient
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 0 entradas
+
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -genkey -keyalg RSA -alias
+ client -validity 360 -keysize 2048 -keystore ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+error de herramienta de claves: java.io.IOException: Keystore was tampered with, or password was incorrect
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -genkey -keyalg RSA -alias
+ client -validity 360 -keysize 2048 -keystore ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+¿Cuáles son su nombre y su apellido?
+  [Unknown]:  dpclient
+¿Cuál es el nombre de su unidad de organización?
+  [Unknown]:  client
+¿Cuál es el nombre de su organización?
+  [Unknown]:
+¿Cuál es el nombre de su ciudad o localidad?
+  [Unknown]:
+¿Cuál es el nombre de su estado o provincia?
+  [Unknown]:
+¿Cuál es el código de país de dos letras de la unidad?
+  [Unknown]:
+¿Es correcto CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown?
+  [no]:  si
+
+Introduzca la contraseña de clave para <client>
+        (INTRO si es la misma contraseña que la del almacén de claves):
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -genkey -keyalg RSA -alias
+ server -validity 360 -keysize 2048 -keystore .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+¿Cuáles son su nombre y su apellido?
+  [Unknown]:  dpcserver
+¿Cuál es el nombre de su unidad de organización?
+  [Unknown]:  server
+¿Cuál es el nombre de su organización?
+  [Unknown]:
+¿Cuál es el nombre de su ciudad o localidad?
+  [Unknown]:
+¿Cuál es el nombre de su estado o provincia?
+  [Unknown]:
+¿Cuál es el código de país de dos letras de la unidad?
+  [Unknown]:
+¿Es correcto CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown?
+  [no]:  si
+
+Introduzca la contraseña de clave para <server>
+        (INTRO si es la misma contraseña que la del almacén de claves):
+PS J:\desarrollo\workspace\MBXExample> del .\aServer.cert
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -export -alias server -fil
+e Server.crt -keystore .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+Certificado almacenado en el archivo <Server.crt>
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -export -alias client -fil
+e Client.crt -keystore ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+Certificado almacenado en el archivo <Client.crt>
+PS J:\desarrollo\workspace\MBXExample> mv .\Client.crt ..\MBXClient\
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias client -fil
+e ..\MBXClient\Client.crt -keystore .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 3f457d3b
+Válido desde: Sun Feb 19 00:46:40 CET 2017 hasta: Wed Feb 14 00:46:40 CET 2018
+Huellas digitales del Certificado:
+         MD5: D7:51:57:02:E3:8C:2F:CA:50:9F:89:EC:18:69:C3:61
+         SHA1: 26:8E:E3:9E:99:88:E8:10:CB:CF:17:8C:3D:9F:6E:77:38:48:BE:BD
+         SHA256: 0F:64:6D:D3:C3:B8:0B:DC:CF:CF:4D:89:20:E6:62:3F:C5:BB:0A:0C:C2:5C:B0:EE:E0:96:5F:51:EF:C8:5F:AE
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9C DA 1C 04 FE 2C 86 26   00 F2 59 0E A7 D3 3A 81  .....,.&..Y...:.
+0010: 48 07 23 DD                                        H.#.
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias server -fil
+e .\Server.crt -keystore ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 623c071a
+Válido desde: Sun Feb 19 00:47:43 CET 2017 hasta: Wed Feb 14 00:47:43 CET 2018
+Huellas digitales del Certificado:
+         MD5: A3:5C:2D:F0:44:EB:E7:85:3E:55:49:02:1F:36:A4:D2
+         SHA1: 0A:2B:99:C2:70:52:78:F9:81:FE:00:20:4C:09:87:26:A2:6C:C3:CE
+         SHA256: 13:21:E4:81:33:C1:81:FC:2B:2F:45:7A:BA:30:82:A4:66:54:FE:93:21:9A:DE:29:92:7B:D5:A4:D1:19:A8:3B
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9E 18 69 98 40 86 69 46   4B 66 9E A1 56 82 46 90  ..i.@.iFKf..V.F.
+0010: 5C E0 EB 68                                        \..h
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -DELETE -alias server -key
+store ..\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -DELETE -list -keystore ..
+\MBXClient\clientkeystore
+Introduzca la contraseña del almacén de claves:
+
+Tipo de Almacén de Claves: JKS
+Proveedor de Almacén de Claves: SUN
+
+Su almacén de claves contiene 1 entrada
+
+client, 19-feb-2017, PrivateKeyEntry,
+Huella Digital de Certificado (SHA1): 26:8E:E3:9E:99:88:E8:10:CB:CF:17:8C:3D:9F:6E:77:38:48:BE:BD
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias client -key
+store .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias client -fil
+e ..\MBXClient\Client.crt -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 3f457d3b
+Válido desde: Sun Feb 19 00:46:40 CET 2017 hasta: Wed Feb 14 00:46:40 CET 2018
+Huellas digitales del Certificado:
+         MD5: D7:51:57:02:E3:8C:2F:CA:50:9F:89:EC:18:69:C3:61
+         SHA1: 26:8E:E3:9E:99:88:E8:10:CB:CF:17:8C:3D:9F:6E:77:38:48:BE:BD
+         SHA256: 0F:64:6D:D3:C3:B8:0B:DC:CF:CF:4D:89:20:E6:62:3F:C5:BB:0A:0C:C2:5C:B0:EE:E0:96:5F:51:EF:C8:5F:AE
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9C DA 1C 04 FE 2C 86 26   00 F2 59 0E A7 D3 3A 81  .....,.&..Y...:.
+0010: 48 07 23 DD                                        H.#.
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias server -fil
+e .\Server.crt -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 623c071a
+Válido desde: Sun Feb 19 00:47:43 CET 2017 hasta: Wed Feb 14 00:47:43 CET 2018
+Huellas digitales del Certificado:
+         MD5: A3:5C:2D:F0:44:EB:E7:85:3E:55:49:02:1F:36:A4:D2
+         SHA1: 0A:2B:99:C2:70:52:78:F9:81:FE:00:20:4C:09:87:26:A2:6C:C3:CE
+         SHA256: 13:21:E4:81:33:C1:81:FC:2B:2F:45:7A:BA:30:82:A4:66:54:FE:93:21:9A:DE:29:92:7B:D5:A4:D1:19:A8:3B
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9E 18 69 98 40 86 69 46   4B 66 9E A1 56 82 46 90  ..i.@.iFKf..V.F.
+0010: 5C E0 EB 68                                        \..h
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias server -fil
+e .\Server.crt -keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 623c071a
+Válido desde: Sun Feb 19 00:47:43 CET 2017 hasta: Wed Feb 14 00:47:43 CET 2018
+Huellas digitales del Certificado:
+         MD5: A3:5C:2D:F0:44:EB:E7:85:3E:55:49:02:1F:36:A4:D2
+         SHA1: 0A:2B:99:C2:70:52:78:F9:81:FE:00:20:4C:09:87:26:A2:6C:C3:CE
+         SHA256: 13:21:E4:81:33:C1:81:FC:2B:2F:45:7A:BA:30:82:A4:66:54:FE:93:21:9A:DE:29:92:7B:D5:A4:D1:19:A8:3B
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9E 18 69 98 40 86 69 46   4B 66 9E A1 56 82 46 90  ..i.@.iFKf..V.F.
+0010: 5C E0 EB 68                                        \..h
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias client -key
+store .\serverkeystore
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias client -key
+store .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias server -fil
+e .\Server.crt -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+error de herramienta de claves: java.lang.Exception: Certificado no importado, el alias <server> ya existe
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias client -fil
+e ..\MBXClient\Client.crt -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 3f457d3b
+Válido desde: Sun Feb 19 00:46:40 CET 2017 hasta: Wed Feb 14 00:46:40 CET 2018
+Huellas digitales del Certificado:
+         MD5: D7:51:57:02:E3:8C:2F:CA:50:9F:89:EC:18:69:C3:61
+         SHA1: 26:8E:E3:9E:99:88:E8:10:CB:CF:17:8C:3D:9F:6E:77:38:48:BE:BD
+         SHA256: 0F:64:6D:D3:C3:B8:0B:DC:CF:CF:4D:89:20:E6:62:3F:C5:BB:0A:0C:C2:5C:B0:EE:E0:96:5F:51:EF:C8:5F:AE
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9C DA 1C 04 FE 2C 86 26   00 F2 59 0E A7 D3 3A 81  .....,.&..Y...:.
+0010: 48 07 23 DD                                        H.#.
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias client -key
+store .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias client -fil
+e ..\MBXClient\Client.crt -keystore .\truststoreserver
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpclient, OU=client, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 3f457d3b
+Válido desde: Sun Feb 19 00:46:40 CET 2017 hasta: Wed Feb 14 00:46:40 CET 2018
+Huellas digitales del Certificado:
+         MD5: D7:51:57:02:E3:8C:2F:CA:50:9F:89:EC:18:69:C3:61
+         SHA1: 26:8E:E3:9E:99:88:E8:10:CB:CF:17:8C:3D:9F:6E:77:38:48:BE:BD
+         SHA256: 0F:64:6D:D3:C3:B8:0B:DC:CF:CF:4D:89:20:E6:62:3F:C5:BB:0A:0C:C2:5C:B0:EE:E0:96:5F:51:EF:C8:5F:AE
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9C DA 1C 04 FE 2C 86 26   00 F2 59 0E A7 D3 3A 81  .....,.&..Y...:.
+0010: 48 07 23 DD                                        H.#.
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -delete -alias server -key
+store ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+PS J:\desarrollo\workspace\MBXExample> & 'C:\Program Files\Java\jdk1.8.0_111\bin\keytool.exe' -import -alias server -fil
+e .\Server.crt -keystore ..\MBXClient\truststoreclient
+Introduzca la contraseña del almacén de claves:
+Propietario: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Emisor: CN=dpcserver, OU=server, O=Unknown, L=Unknown, ST=Unknown, C=Unknown
+Número de serie: 623c071a
+Válido desde: Sun Feb 19 00:47:43 CET 2017 hasta: Wed Feb 14 00:47:43 CET 2018
+Huellas digitales del Certificado:
+         MD5: A3:5C:2D:F0:44:EB:E7:85:3E:55:49:02:1F:36:A4:D2
+         SHA1: 0A:2B:99:C2:70:52:78:F9:81:FE:00:20:4C:09:87:26:A2:6C:C3:CE
+         SHA256: 13:21:E4:81:33:C1:81:FC:2B:2F:45:7A:BA:30:82:A4:66:54:FE:93:21:9A:DE:29:92:7B:D5:A4:D1:19:A8:3B
+         Nombre del Algoritmo de Firma: SHA256withRSA
+         Versión: 3
+
+Extensiones:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 9E 18 69 98 40 86 69 46   4B 66 9E A1 56 82 46 90  ..i.@.iFKf..V.F.
+0010: 5C E0 EB 68                                        \..h
+]
+]
+
+¿Confiar en este certificado? [no]:  si
+Se ha agregado el certificado al almacén de claves
+PS J:\desarrollo\workspace\MBXExample>
